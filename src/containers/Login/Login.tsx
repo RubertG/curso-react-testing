@@ -15,10 +15,10 @@ const mockSuperAdmin = {
   password: "superadmin123!",
 };
 
-const mockVisualuizer = {
-  username: "visualizer1@example.com",
-  password: "vis1pass456@",
-};
+// const mockVisualuizer = {
+//   username: "visualizer1@example.com",
+//   password: "vis1pass456@",
+// };
 
 export const Login: React.FC = () => {
   const [formData, setFormData] = useState<LoginFormData>(mockSuperAdmin);
@@ -88,6 +88,7 @@ export const Login: React.FC = () => {
               type="button"
               onClick={togglePasswordVisibility}
               className={classes.Login__togglePassword}
+              name="togglePassword"
             >
               {showPassword ? "hide" : "show"}
             </button>
