@@ -50,3 +50,7 @@ import "@testing-library/jest-dom";
 ```bash
   pnpm test
 ```
+
+## Cuando utilizar Spy 
+
+Cuando necesite verificar el flujo completo de una función, es decir, que se ejecute una función interna de otra función, se puede utilizar `vi.spyOn` para verificar que se ejecute la función interna correctamente.
