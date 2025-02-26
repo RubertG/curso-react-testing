@@ -38,19 +38,21 @@ describe("useOrders", () => {
 
 	it("Deberia mostrar un error", async () => {
 		useSessionSpy.mockReturnValue({ user: { id: 1 } });
-    getOrdersSpy.mockRejectedValue(new Error("Error al obtener las ordenes"));
-    const { result } = renderHook(() => useOrders());
+		getOrdersSpy.mockRejectedValue(new Error("Error al obtener las ordenes"));
+		const { result } = renderHook(() => useOrders());
 
-    expect(result.current.loading).toBe(true);
-    expect(result.current.orders).toEqual([]);
-    expect(result.current.error).toBeNull();
+		expect(result.current.loading).toBe(true);
+		expect(result.current.orders).toEqual([]);
+		expect(result.current.error).toBeNull();
 
-    await waitFor(() => {
-      expect(result.current.orders).toEqual([]);
-      expect(result.current.loading).toBe(false);
-      expect(result.current.error).toBe("Failed to fetch orders. Please try again later.");
-      expect(mockNavigate).not.toHaveBeenCalled();
-      expect(getOrdersSpy).toHaveBeenCalledTimes(1);
-    });
+		await waitFor(() => {
+			expect(result.current.orders).toEqual([]);
+			expect(result.current.loading).toBe(false);
+			expect(result.current.error).toBe(
+				"Failed to fetch orders. Please try again later."
+			);
+			expect(mockNavigate).not.toHaveBeenCalled();
+			expect(getOrdersSpy).toHaveBeenCalledTimes(1);
+		});
 	});
 });
