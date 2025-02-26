@@ -15,17 +15,17 @@ export const OrderSummary: React.FC<{ orders: Order[] }> = ({ orders }) => {
       <div className={styles.OrdersSummary__grid}>
         <div className={styles.OrdersSummary__item}>
           <p className={styles.OrdersSummary__label}>Total Orders</p>
-          <p className={styles.OrdersSummary__value}>{summary.totalOrders}</p>
+          <p className={styles.OrdersSummary__value} data-testid="totalOrders">{summary.totalOrders}</p>
         </div>
         <div className={styles.OrdersSummary__item}>
           <p className={styles.OrdersSummary__label}>Total Value</p>
-          <p className={styles.OrdersSummary__value}>
+          <p className={styles.OrdersSummary__value} data-testid="totalValue">
             ${summary.totalValue.toFixed(2)}
           </p>
         </div>
         <div className={styles.OrdersSummary__item}>
           <p className={styles.OrdersSummary__label}>Average Order Value</p>
-          <p className={styles.OrdersSummary__value}>
+          <p className={styles.OrdersSummary__value} data-testid="averageOrderValue">
             ${summary.averageOrderValue.toFixed(2)}
           </p>
         </div>
@@ -38,7 +38,7 @@ export const OrderSummary: React.FC<{ orders: Order[] }> = ({ orders }) => {
           {Object.entries(summary.ordersByStatus).map(([status, count]) => (
             <li key={status} className={styles.OrdersSummary__statusItem}>
               <StatusBadge status={status} />
-              <span className={styles.OrdersSummary__statusCount}>{count}</span>
+              <span className={styles.OrdersSummary__statusCount} data-testid={status}>{count}</span>
             </li>
           ))}
         </ul>
