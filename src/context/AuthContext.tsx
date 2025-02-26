@@ -6,9 +6,11 @@ interface SessionContextType {
   logout: () => void;
 }
 
+export type Role = "superadmin" | "visualizer";
+
 type User = {
   id: string;
-  role: string;
+  role: Role;
 };
 
 const SessionContext = createContext<SessionContextType | undefined>(undefined);
@@ -33,6 +35,7 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useSession = () => {
   const context = useContext(SessionContext);
   if (!context) {
